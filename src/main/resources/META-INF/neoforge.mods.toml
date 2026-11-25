@@ -1,11 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
 license = "MIT"
+issueTrackerURL = "https://github.com/WayDougwas/ntm-claims/issues"
 
 [[mods]]
 modId = "ntmclaims"
 version = "${mod_version}"
 displayName = "NTM Claims"
+displayURL = "https://github.com/WayDougwas/ntm-claims"
 logoFile = "ntmclaims_logo.png"
 description = '''Makes NTM - Continuum respect FTB Chunks claims: explosions, nukes, fallout, fire, acid, radiation and terraforming no longer touch protected claims, and NTM hazards respect claim PvP settings.'''
 
