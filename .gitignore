@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+run/
+runs/
+out/
+*.class
+
+# local files (publishing notes, logo generators, built jars)
+curseforge.md
+tools/
+upload/
+
+# IDE / OS
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+.DS_Store
+Thumbs.db

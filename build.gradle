@@ -1,0 +1,83 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = 'ntm-claims'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    // Mods from CurseForge: curse.maven:<name>-<projectId>:<fileId>
+    maven {
+        name = 'CurseMaven'
+        url = 'https://cursemaven.com'
+        content { includeGroup 'curse.maven' }
+    }
+}
+
+neoForge {
+    version = neo_version
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    compileOnly "curse.maven:ftb-chunks-314906:9594476"
+    compileOnly "curse.maven:ftb-library-404465:9350706"
+    compileOnly "curse.maven:ftb-teams-404468:9434081"
+    compileOnly "curse.maven:architectury-419699:9608861"
+    compileOnly "curse.maven:golemcore-1719361:9523847"
+}
+
+// Fill the version into neoforge.mods.toml (plain replace, so other '$' characters are left alone).
+processResources {
+    inputs.property 'version', mod_version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        filter { line -> line.replace('${mod_version}', mod_version) }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    archiveFileName = "ntm-claims-${mod_version}+${minecraft_version}-neoforge.jar"
+    from('LICENSE') {
+        rename { "LICENSE_${mod_id}" }
+    }
+    manifest {
+        attributes(
+                'Implementation-Title': mod_name,
+                'Implementation-Version': mod_version,
+                'Implementation-Vendor': mod_authors
+        )
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "ntmclaims"
+version = "${mod_version}"
+displayName = "NTM Claims"
+logoFile = "ntmclaims_logo.png"
+description = '''Makes NTM - Continuum respect FTB Chunks claims: explosions, nukes, fallout, fire, acid, radiation and terraforming no longer touch protected claims, and NTM hazards respect claim PvP settings.'''
+
+[[dependencies.ntmclaims]]
+modId = "golemcore"
+type = "required"
+versionRange = "[1.0.5,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ntmclaims]]
+modId = "hbm"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ntmclaims]]
+modId = "ftbchunks"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
